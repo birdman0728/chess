@@ -64,19 +64,90 @@ public class ChessPiece {
             case QUEEN:
                 break;
             case BISHOP:
-                //diagonal up left
-                if(x < 8 && y < 8) {
-                    x++;
-                    y++;
-                    validMoves.add()
-                };
                 //diagonal up right
+                if(myPosition.getColumn()<8 && myPosition.getRow()<8) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        x++;
+                        y++;
+//                        validMoves.add(x,y);
+                    }while(x<8 && y<8);
+                }
+                //diagonal up left
+                if(myPosition.getColumn()>1 && myPosition.getRow()<8) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        x--;
+                        y++;
+//                        validMoves.add(x,y);
+                    }while(x>1 && y<8);
+                }
+                //diagonal down right
+                if(myPosition.getColumn()<8 && myPosition.getRow()>1) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        x++;
+                        y--;
+//                        validMoves.add(x,y);
+                    }while(x<8 && y>1);
+                }
+                //diagonal down left
+                if(myPosition.getColumn()>1 && myPosition.getRow()>1) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        x--;
+                        y--;
+//                        validMoves.add(x,y);
+                    }while(x>1 && y>1);
+                }
 
                 break;
             case KNIGHT:
                 break;
             case ROOK:
+                //up
+                if(myPosition.getColumn()<8) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        x++;
+//                        validMoves.add(x,y);
+                    }while(x<8);
+                }
+                //down
+                if(myPosition.getColumn()>1) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        x--;
+//                        validMoves.add(x,y);
+                    }while(x>1);
+                }
+                //right
+                if(myPosition.getRow()<8) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        y++;
+//                        validMoves.add(x,y);
+                    }while(y<8);
+                }
+                //left
+                if(myPosition.getRow()>1) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        y--;
+//                        validMoves.add(x,y);
+                    }while(y>1);
+                }
+
                 break;
+
             case PAWN:
                 break;
 
