@@ -18,9 +18,7 @@ public class ChessBoard {
      * @param position where to add the piece to
      * @param piece    the piece to add
      */
-    public void addPiece(ChessPosition position, ChessPiece piece) {
-        throw new RuntimeException("Not implemented");
-    }
+    public void addPiece(ChessPosition position, ChessPiece piece) {throw new RuntimeException("Not implemented");}
 
     /**
      * Gets a chess piece on the chessboard
