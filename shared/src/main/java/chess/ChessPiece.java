@@ -59,10 +59,123 @@ public class ChessPiece {
 
         switch(type) {
             case KING:
-//                if()
+                //diagonal up right
+                if(myPosition.getColumn()<8 && myPosition.getRow()<8) {
+//                        validMoves.add(myPosition.getColumn()+1,myPosition.getRow()+1);
+                }
+                //diagonal up left
+                if(myPosition.getColumn()>1 && myPosition.getRow()<8) {
+//                    validMoves.add(myPosition.getColumn()-1,myPosition.getRow()+1);
+                }
+                //diagonal down right
+                if(myPosition.getColumn()<8 && myPosition.getRow()>1) {
+//                    validMoves.add(myPosition.getColumn()+1,myPosition.getRow()-1);
+                }
+                //diagonal down left
+                if(myPosition.getColumn()>1 && myPosition.getRow()>1) {
+//                    validMoves.add(myPosition.getColumn()-1,myPosition.getRow()-1);
+                }
+                //up
+                if(myPosition.getColumn()<8) {
+//                    validMoves.add(myPosition.getColumn()+1,myPosition.getRow());
+                }
+                //down
+                if(myPosition.getColumn()>1) {
+//                    validMoves.add(myPosition.getColumn()-1,myPosition.getRow());
+                    }
+                //right
+                if(myPosition.getRow()<8) {
+//                    validMoves.add(myPosition.getColumn(),myPosition.getRow()+1);
+                    }
+                //left
+                if(myPosition.getRow()>1) {
+//                    validMoves.add(myPosition.getColumn(),myPosition.getRow()-1);
+                    }
+                //check stuff???
                 break;
+
+
             case QUEEN:
+                //diagonal up right
+                if(myPosition.getColumn()<8 && myPosition.getRow()<8) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        x++;
+                        y++;
+//                        validMoves.add(x,y);
+                    }while(x<8 && y<8);
+                }
+                //diagonal up left
+                if(myPosition.getColumn()>1 && myPosition.getRow()<8) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        x--;
+                        y++;
+//                        validMoves.add(x,y);
+                    }while(x>1 && y<8);
+                }
+                //diagonal down right
+                if(myPosition.getColumn()<8 && myPosition.getRow()>1) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        x++;
+                        y--;
+//                        validMoves.add(x,y);
+                    }while(x<8 && y>1);
+                }
+                //diagonal down left
+                if(myPosition.getColumn()>1 && myPosition.getRow()>1) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        x--;
+                        y--;
+//                        validMoves.add(x,y);
+                    }while(x>1 && y>1);
+                }
+                //up
+                if(myPosition.getColumn()<8) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        x++;
+//                        validMoves.add(x,y);
+                    }while(x<8);
+                }
+                //down
+                if(myPosition.getColumn()>1) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        x--;
+//                        validMoves.add(x,y);
+                    }while(x>1);
+                }
+                //right
+                if(myPosition.getRow()<8) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        y++;
+//                        validMoves.add(x,y);
+                    }while(y<8);
+                }
+                //left
+                if(myPosition.getRow()>1) {
+                    y = myPosition.getRow();
+                    x = myPosition.getColumn();
+                    do {
+                        y--;
+//                        validMoves.add(x,y);
+                    }while(y>1);
+                }
+
                 break;
+
+
             case BISHOP:
                 //diagonal up right
                 if(myPosition.getColumn()<8 && myPosition.getRow()<8) {
@@ -106,8 +219,17 @@ public class ChessPiece {
                 }
 
                 break;
+
+
             case KNIGHT:
+
+                do{
+
+                }while();
+
                 break;
+
+
             case ROOK:
                 //up
                 if(myPosition.getColumn()<8) {
@@ -148,7 +270,31 @@ public class ChessPiece {
 
                 break;
 
+
             case PAWN:
+                //white pawns
+                if(myPosition.getRow() > 1 && getTeamColor() == ChessGame.TeamColor.WHITE){
+                    if(x<=7){
+//                        validMoves.add(myPosition.getRow() +1, myPosition.getColumn());
+                    }else if(myPosition.getRow() == 7 && getTeamColor() == ChessGame.TeamColor.WHITE){
+                        //promote piece and add move validMoves.add(myPosition.getRow() + 1, myPosition.getColumn());
+                    }
+                }
+
+                //black pawns
+                if(myPosition.getRow() <8 && getTeamColor() == ChessGame.TeamColor.BLACK){
+                    if(x>=2){
+//                        validMoves.add(myPosition.getRow() -1, myPosition.getColumn());
+                    }else if(myPosition.getRow() == 2 && getTeamColor() == ChessGame.TeamColor.BLACK){
+                        //promote piece and add move validMoves.add(myPosition.getRow() - 1, myPosition.getColumn());
+                    }
+                }
+                //capture white
+                //capture black
+
+                //en passant white
+                //en passant black
+
                 break;
 
         }
