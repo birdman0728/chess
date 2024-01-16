@@ -223,9 +223,54 @@ public class ChessPiece {
 
             case KNIGHT:
 
-                do{
+                y = myPosition.getRow() + 2;
+                x = myPosition.getColumn() + 1;
+                if(x <= 8 && x >= 1 && y <= 8 && y >= 1){
+//                    validMoves.add(x,y);
+                }
 
-                }while();
+                y = myPosition.getRow() + 2;
+                x = myPosition.getColumn() - 1;
+                if(x <= 8 && x >= 1 && y <= 8 && y >= 1){
+//                    validMoves.add(x,y);
+                }
+
+                y = myPosition.getRow() - 2;
+                x = myPosition.getColumn() + 1;
+                if(x <= 8 && x >= 1 && y <= 8 && y >= 1){
+//                    validMoves.add(x,y);
+                }
+
+                y = myPosition.getRow() - 2;
+                x = myPosition.getColumn() - 1;
+                if(x <= 8 && x >= 1 && y <= 8 && y >= 1){
+//                    validMoves.add(x,y);
+                }
+
+                y = myPosition.getRow() + 1;
+                x = myPosition.getColumn() + 2;
+                if(x <= 8 && x >= 1 && y <= 8 && y >= 1){
+//                    validMoves.add(x,y);
+                }
+
+                y = myPosition.getRow() - 1;
+                x = myPosition.getColumn() + 2;
+                if(x <= 8 && x >= 1 && y <= 8 && y >= 1){
+//                    validMoves.add(x,y);
+                }
+
+                y = myPosition.getRow() + 1;
+                x = myPosition.getColumn() - 2;
+                if(x <= 8 && x >= 1 && y <= 8 && y >= 1){
+//                    validMoves.add(x,y);
+                }
+
+                y = myPosition.getRow() - 1;
+                x = myPosition.getColumn() - 2;
+                if(x <= 8 && x >= 1 && y <= 8 && y >= 1){
+//                    validMoves.add(x,y);
+                }
+
 
                 break;
 

@@ -9,6 +9,9 @@ package chess;
 public class ChessBoard {
 
     ChessPiece NewPiece;
+    int maxRow = 8;
+    int maxCol = 8;
+    ChessPiece[][] board = new ChessPiece[maxCol][maxRow];
     public ChessBoard() {
         
     }
@@ -21,6 +24,11 @@ public class ChessBoard {
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
         NewPiece = new ChessPiece(piece.getTeamColor(),piece.getPieceType());
+        board[position.getColumn()][position.getRow()] = NewPiece;
+    }
+
+    public void removePiece(ChessPosition position) {
+        board[position.getColumn()][position.getRow()] = null;
     }
 
     /**
@@ -31,8 +39,7 @@ public class ChessBoard {
      * position
      */
     public ChessPiece getPiece(ChessPosition position) {
-        NewPiece.pieceMoves(ChessBoard.this,position);
-        return NewPiece;
+        return board[position.getColumn()][position.getRow()];
     }
 
     /**
@@ -40,6 +47,54 @@ public class ChessBoard {
      * (How the game of chess normally starts)
      */
     public void resetBoard() {
-        throw new RuntimeException("Not implemented");
+        clearBoard();
+
+        //white pawns
+        for(int i = 1; i<=16; i++){
+            if(i< 9){
+                addPiece(new ChessPosition(2,i),new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.PAWN ));
+            }else{
+                addPiece(new ChessPosition(7,(i-8)),new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN ));
+            }
+
+        }
+        //White rooks
+        addPiece(new ChessPosition(1,1),new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.ROOK ));
+        addPiece(new ChessPosition(1,8),new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.ROOK ));
+        //Black rooks
+        addPiece(new ChessPosition(8,1),new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.ROOK ));
+        addPiece(new ChessPosition(8,8),new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.ROOK ));
+
+        //White knights
+        addPiece(new ChessPosition(1,2),new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.KNIGHT ));
+        addPiece(new ChessPosition(1,7),new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.KNIGHT ));
+        //Black Knights
+        addPiece(new ChessPosition(8,2),new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.KNIGHT ));
+        addPiece(new ChessPosition(8,7),new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.KNIGHT ));
+
+        //White bishops
+        addPiece(new ChessPosition(1,3),new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.BISHOP ));
+        addPiece(new ChessPosition(1,6),new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.BISHOP ));
+        //Black bishops
+        addPiece(new ChessPosition(8,3),new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.BISHOP ));
+        addPiece(new ChessPosition(8,6),new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.BISHOP ));
+
+        //White Queen
+        addPiece(new ChessPosition(1,4),new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.QUEEN ));
+        //Black Queen
+        addPiece(new ChessPosition(8,4),new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.QUEEN ));
+
+        //White King
+        addPiece(new ChessPosition(1,5),new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.KING ));
+        //Black King
+        addPiece(new ChessPosition(8,5),new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.KING ));
+    }
+
+    public void clearBoard(){
+        for(int i = 1; i <=8; i++){
+            for(int j = 1; j<=8; j++){
+                board[i][j] = null;
+            }
+        }
     }
 }
