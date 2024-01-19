@@ -1,5 +1,8 @@
 package chess;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * A chessboard that can hold and rearrange chess pieces.
  * <p>
@@ -97,4 +100,21 @@ public class ChessBoard {
             }
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChessBoard that = (ChessBoard) o;
+        return maxRow == that.maxRow && maxCol == that.maxCol && Objects.equals(NewPiece, that.NewPiece) && Arrays.deepEquals(board, that.board);//this was changed to deep equals
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(NewPiece, maxRow, maxCol);
+        result = 31 * result + Arrays.deepHashCode(board);
+        return result;
+    }
 }
+
+//generate equals method change arrays.equals to deep equals?

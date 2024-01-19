@@ -2,6 +2,8 @@ package chess;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Objects;
 
 /**
  * Represents a single chess piece
@@ -13,6 +15,7 @@ public class ChessPiece {
 
     private ChessGame.TeamColor teamColor;
     private ChessPiece.PieceType type;
+    ChessBoard board = new ChessBoard();
     public ChessPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {
         this.teamColor = pieceColor;
         this.type = type;
@@ -52,20 +55,26 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-        ArrayList <ChessMove> validMoves = new ArrayList<ChessMove>();
+        Collection <ChessMove> validMoves = new HashSet<>();
+//        validMoves.add(ChessMove);
 
         int y = myPosition.getRow();
         int x = myPosition.getColumn();
+
 
         switch(type) {
             case KING:
                 //diagonal up right
                 if(myPosition.getColumn()<8 && myPosition.getRow()<8) {
 //                        validMoves.add(myPosition.getColumn()+1,myPosition.getRow()+1);
+
+                    pieceMoves(board,myPosition).add(new ChessMove(myPosition, new ChessPosition(myPosition.getRow()+1,myPosition.getColumn()+1), null));
+
+                    //check if this works
                 }
                 //diagonal up left
                 if(myPosition.getColumn()>1 && myPosition.getRow()<8) {
-//                    validMoves.add(myPosition.getColumn()-1,myPosition.getRow()+1);
+//                    validMoves.add(new ChessMove(myPosition.getColumn()-1,myPosition.getRow()+1);
                 }
                 //diagonal down right
                 if(myPosition.getColumn()<8 && myPosition.getRow()>1) {
@@ -343,6 +352,19 @@ public class ChessPiece {
                 break;
 
         }
-    return validMoves;
+    return validMoves;//Not sure on this one
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChessPiece that = (ChessPiece) o;
+        return teamColor == that.teamColor && type == that.type && Objects.equals(board, that.board);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(teamColor, type, board);
     }
 }
