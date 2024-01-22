@@ -26,8 +26,7 @@ public class ChessBoard {
      * @param piece    the piece to add
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
-        NewPiece = new ChessPiece(piece.getTeamColor(),piece.getPieceType());
-        board[position.getColumn()][position.getRow()] = NewPiece;
+        board[position.getColumn()-1][position.getRow()-1] = piece;
     }
 
     public void removePiece(ChessPosition position) {
@@ -52,14 +51,10 @@ public class ChessBoard {
     public void resetBoard() {
         clearBoard();
 
-        //white pawns
-        for(int i = 1; i<=16; i++){
-            if(i< 9){
-                addPiece(new ChessPosition(2,i),new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.PAWN ));
-            }else{
-                addPiece(new ChessPosition(7,(i-8)),new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN ));
-            }
-
+        //pawns
+        for(int i = 1; i<=8; i++) {
+            addPiece(new ChessPosition(2, i), new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.PAWN));
+            addPiece(new ChessPosition(7, i), new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN));
         }
         //White rooks
         addPiece(new ChessPosition(1,1),new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.ROOK ));
@@ -96,7 +91,7 @@ public class ChessBoard {
     public void clearBoard(){
         for(int i = 1; i <=8; i++){
             for(int j = 1; j<=8; j++){
-                board[i][j] = null;
+                addPiece(new ChessPosition(i, j), null);
             }
         }
     }
@@ -116,5 +111,3 @@ public class ChessBoard {
         return result;
     }
 }
-
-//generate equals method change arrays.equals to deep equals?
