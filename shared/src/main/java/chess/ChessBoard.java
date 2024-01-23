@@ -110,4 +110,14 @@ public class ChessBoard {
         result = 31 * result + Arrays.deepHashCode(board);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "ChessBoard{" +
+                "NewPiece=" + NewPiece +
+                ", maxRow=" + maxRow +
+                ", maxCol=" + maxCol +
+                ", board=" + Arrays.toString(board) +
+                '}';
+    }
 }
