@@ -411,7 +411,7 @@ public class ChessPiece {
                             }
                         }
                     }else if(y+1 == 8){
-                        if (board.getPiece(new ChessPosition(y + 1, x)) == null) {
+                        if (board.getPiece(new ChessPosition(y + 1, x+1)) != null) {
                             validMoves.add(new ChessMove(myPosition, new ChessPosition(y + 1, x+1), PieceType.QUEEN ));
                             validMoves.add(new ChessMove(myPosition, new ChessPosition(y + 1, x+1), PieceType.ROOK ));
                             validMoves.add(new ChessMove(myPosition, new ChessPosition(y + 1, x+1), PieceType.BISHOP ));
@@ -426,7 +426,7 @@ public class ChessPiece {
                             }
                         }
                     }else if(y+1 == 8){
-                        if (board.getPiece(new ChessPosition(y + 1, x-1)) == null) {
+                        if (board.getPiece(new ChessPosition(y + 1, x-1)) != null) {
                             validMoves.add(new ChessMove(myPosition, new ChessPosition(y + 1, x-1), PieceType.QUEEN ));
                             validMoves.add(new ChessMove(myPosition, new ChessPosition(y + 1, x-1), PieceType.ROOK ));
                             validMoves.add(new ChessMove(myPosition, new ChessPosition(y + 1, x-1), PieceType.BISHOP ));
